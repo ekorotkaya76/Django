@@ -12,6 +12,7 @@ class Record(models.Model):
     state = models.CharField(max_length=10,
                              choices=STATE,
                              default='draft')
+    slug = models.SlugField(max_length=250, unique_for_date="pub")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='all_records')
     pub = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
